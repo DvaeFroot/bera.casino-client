@@ -4,10 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'light-peach': '#EDE0D0'
+        'light-peach': '#EDE0D0',
+        'light-peach-100': '#E7CEBE',
+        'light-yellow': '#FFF9CA',
+        'light-brown': '#DFC49E'
       },
       fontFamily: {
-        custom: ['Koulen']
+        custom: ['Koulen'],
+        custom: ['Lexend'],
       }
     },
   },
