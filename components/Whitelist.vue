@@ -29,6 +29,14 @@
               <input type="text" placeholder="Enter your Telegram @">
             </div>
           </div>
+          <div>
+            <div>
+              What is your BeraChain address?
+            </div>
+            <div>
+              <input type="text" placeholder="Enter your BeraChain address">
+            </div>
+          </div>
         </div>
         <div class="flex flex-row-reverse">
           <button>Submit</button>
