@@ -2,7 +2,11 @@
 export default {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'light-peach': '#EDE0D0'
+      }
+    },
   },
   plugins: [],
 }
