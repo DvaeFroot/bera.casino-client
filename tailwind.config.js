@@ -5,6 +5,9 @@ export default {
     extend: {
       colors: {
         'light-peach': '#EDE0D0'
+      },
+      fontFamily: {
+        custom: ['Koulen']
       }
     },
   },
