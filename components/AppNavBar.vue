@@ -8,7 +8,7 @@ import { Icon } from '#components';
     <div class="flex flex-row justify-between w-[600px]">
       <div class=""><img src="/beracasino.png" class="scale-100 cursor-pointer" />
       </div>
-      <div class="flex flex-row justify-evenly ml-16 items-center font-[">
+      <div class="flex flex-row justify-evenly ml-16 items-center">
         <div class="px-4 font-[Koulen] text-2xl cursor-pointer hover:border-b-4 hover:border-black">
           WHITELIST
         </div>
