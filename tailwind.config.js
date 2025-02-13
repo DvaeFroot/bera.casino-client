@@ -7,7 +7,8 @@ export default {
         'light-peach': '#EDE0D0',
         'light-peach-100': '#E7CEBE',
         'light-yellow': '#FFF9CA',
-        'light-brown': '#DFC49E'
+        'light-brown': '#DFC49E',
+        'egg-white': '#EFEFEF'
       },
       fontFamily: {
         custom: ['Koulen'],

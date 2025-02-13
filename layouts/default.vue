@@ -2,6 +2,6 @@
   <div>
     <AppNavBar />
     <slot />
-    <Whitelist />
+    <SectionWhitelist />
   </div>
 </template>

@@ -4,7 +4,7 @@ import { Icon } from '#components';
 </script>
 
 <template>
-  <div class="flex justify-between flex-row px-12 py-2 bg-light-peach border-b border-black">
+  <div class="flex justify-between flex-row px-12 py-2 bg-light-peach border-b border-black z-20 sticky top-0">
     <div class="flex flex-row justify-between w-[600px]">
       <div class=""><img src="/beracasino.png" class="scale-100 cursor-pointer" />
       </div>
