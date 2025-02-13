@@ -1,7 +1,6 @@
 <template>
   <div>
     <AppNavBar />
-    <slot />
-    <SectionWhitelist />
+    <NuxtPage />
   </div>
 </template>
