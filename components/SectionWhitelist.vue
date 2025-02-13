@@ -1,9 +1,12 @@
 <template>
-  <div class="relative flex flex-row justify-between bg-light-peach px-16 pb-12 pt-[100px]">
+  <div class="relative overflow-hidden flex flex-row justify-between bg-light-peach px-16 pb-12 pt-[100px]">
     <!-- Decorations -->
-    <div class="absolute left-[400px] top-[50px] -z-0 h-[300px] w-[1200px] border border-black"></div>
-    <div class="absolute left-[-400px] top-[400px] -z-0 h-[300px] w-[1200px] border border-black"></div>
-    <div class="absolute bottom-[-100px] right-[-400px] -z-0 h-[300px] w-[1200px] border border-black"></div>
+    <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  max-w-full w-[1200px] border border-black">
+    </div>
+    <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  max-w-full w-[1200px] border border-black">
+    </div>
+    <div class="absolute  bottom-[-100px] right-[-400px] -z-0 h-[300px]  w-[1200px] border border-black">
+    </div>
 
     <!-- Left Section -->
     <div class="relative z-10 w-[800px]">
