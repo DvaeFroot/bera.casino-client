@@ -5,15 +5,17 @@
      <div class="absolute left-[400px] top-[64px] h-[300px] w-[1200px] border border-black -z-0 "></div>
     <div class="absolute left-[-700px] top-[400px] h-[300px] w-[1200px] border border-black -z-0"></div>
     <div class="absolute right-[-400px] bottom-[-200px] h-[300px] w-[1200px] border border-black -z-0"></div>
-
-
+    <!-- Box background for the bear GIF -->
+    <div class="absolute z-1 box-content w-[400px] h-[460px] bottom-8 inset-x-[160px]  p-12 border border-black bg-white border-black"></div>
     <!-- First Section -->
     <section class="relative py-16 px-4 md:px-8 border-b border-black lg:mx-auto">
+      <!-- <div class="absolute z-1 box-content max-w-96 h-80 bottom-8 inset-x-20  p-12 border-2 bg-white border-black"></div> -->
+
       <div class="max-w-6xl lg:mx-auto">
         <div class="flex flex-col grid grid-cols-1 md:grid-cols-2 gap-16 items-center lg:mx-auto lg:gap-32">
-
+          
           <!-- GIF Box -->
-          <div class="relative bg-white  border border-black h-84">
+            <div class="relative bg-white  border border-black h-84">
             <!-- rectangle that holds the close and minimize button design -->
             <div class=" border-b border-black bg-white w-full h-8 ">
               <div class="flex flex-row-reverse h-full">
@@ -21,10 +23,16 @@
                 <p class="border-l border-black pl-3 pr-3">_</p>
               </div>
             </div>
-
+              
+                
             <!-- GIF file embed - Bear Biking-->
             <img src="/bikingbear.gif" alt="Sample GIF" class="w-full h-auto rounded " />
+            <!--<div class="relative bg-white  border border-black h-84 bottom-3"></div>-->
+                            
           </div>
+          
+          
+         
 
           <div class="absolute mt-2 ml-2  bg-white  border border-black h-84">
           
@@ -34,7 +42,8 @@
           </div>
 
           <!-- Simple Text Carousel -->
-          <div class=" p-6 max-w-6xl h-auto w-auto border border-black bg-white lg:w-[500px]">
+          <div class=" p-6 max-w-6xl h-auto w-auto border border-black bg-white lg:w-[5
+          00px]">
             <div class="relative h-80 ">
               <transition-group name="fade">
                 <div v-for="(text, index) in carouselTexts" :key="index" v-show="currentIndex === index"
@@ -49,19 +58,21 @@
         </div>
       </div>
     </section>
-
+      
      <!-- Second Section -->
     <section class="relative py-16 px-4 md:px-8 border-b border-black max-w-7xl  mx-8 my-8">
       <div class="flex content-center pb-[150px] h-full">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 content-center ">
 
-          <div>
-            <h1 class="font-[Koulen] text-8xl text-center sm:text-center sm:ml-4">STAKING</h1>
-            <p class="font-[Koulen] text-2xl text-center sm:text-center sm:ml-4">"Coming thoon.."</p>
+          <div class="py-[170px]">
+            
+            <h1 class="font-[Koulen] text-9xl text-center sm:text-center sm:ml-4">STAKING</h1>
+            <p class="font-[Koulen] text-3xl text-center sm:text-center sm:ml-4">"Coming thoon.."</p>
           </div>
-
           
-          <div class="gif-container md:ml-[250px] md:-my-[160px] border border-black h-auto w-full lg:my-[5px]  ">
+          <div class="absolute z-1 box-content w-[360px] h-[400px]  top-[90px] right-6  p-12 border border-black bg-white border-black"></div>
+
+          <div class="relative gif-container md:ml-[250px] md:-my-[160px] border border-black h-auto w-full lg:my-[5px]  ">
             <!-- rectangle that holds the close and minimize button design -->
             <div class="border-b border-black bg-white w-full h-8 ">
               <div class="flex flex-row-reverse h-full">
@@ -73,7 +84,7 @@
             <!-- GIF file embed - Bear Eating Fruits -->
             <img class="h-auto w-full"  src="/bear.png"/>
 
-        
+            
           </div>
 
         </div>
