@@ -2,11 +2,86 @@
   <div class="min-h-screen bg-light-peach">
 
      <!-- Decorations -->
-     <div class="absolute left-[400px] top-[64px] h-[300px] w-[1200px] border border-black -z-0 "></div>
-    <div class="absolute left-[-700px] top-[400px] h-[300px] w-[1200px] border border-black -z-0"></div>
-    <div class="absolute right-[-400px] bottom-[-200px] h-[300px] w-[1200px] border border-black -z-0"></div>
-    <!-- Box background for the bear GIF -->
-    <div class="absolute z-1 box-content w-[400px] h-[460px] bottom-8 inset-x-[160px]  p-12 border border-black bg-white border-black"></div>
+        
+     
+     <!-- 1st Decoration box -->
+    <div class="
+    absolute 
+    left-[400px] 
+    top-[64px] 
+    h-[300px] 
+    w-[1200px] 
+    border 
+    border-black 
+    overflow-hidden
+    -z-0 
+ 
+    [@media(min-width:375px)_and_(max-width:667px)]:w-full
+    
+
+
+
+    ">
+    </div>
+
+  <!-- 2nd Decoration box -->
+    <div class="absolute 
+    left-[-700px] 
+    top-[400px] 
+    h-[300px] 
+    w-[1200px] 
+    border 
+    border-black 
+    -z-0
+    
+    ">
+   </div>
+
+    <div class="
+    absolute 
+    right-[-400px] 
+    bottom-[-200px] 
+    h-[300px] 
+    w-[1200px] 
+    border 
+    border-black 
+    -z-0">
+    </div>
+    
+    
+    <!-- Stacked Box background for the bear GIF -->
+    <div class="
+    absolute 
+    box-content 
+    w-[400px] 
+    h-[460px] 
+    bottom-8 
+    inset-x-[160px] 
+   
+    p-12 border 
+    border-black 
+    bg-white 
+
+      [@media(min-width:375px)_and_(max-width:667px)]:w-[213px]
+      [@media(min-width:375px)_and_(max-width:667px)]:h-[303px]
+      [@media(min-width:375px)_and_(max-width:667px)]:-ml-[130px]
+      [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[133px] 
+      [@media(min-width:375px)_and_(max-width:667px)]:inset-x-[185px] 
+     
+    
+   
+    
+      [@media(min-width:1024px)]:w-[400px] 
+      [@media(min-width:1024px)]:h-[460px] 
+      [@media(min-width:1024px)]:ml-[5px] 
+      [@media(min-width:1024px)]:top-[180px]
+      [@media(min-width:1024px)]:rounded
+    
+      lg:ml-[90px] 
+      lg:top-[180px] 
+    ">
+    </div>
+
     <!-- First Section -->
     <section class="relative py-16 px-4 md:px-8 border-b border-black lg:mx-auto">
       <!-- <div class="absolute z-1 box-content max-w-96 h-80 bottom-8 inset-x-20  p-12 border-2 bg-white border-black"></div> -->
@@ -61,16 +136,65 @@
       
      <!-- Second Section -->
     <section class="relative py-16 px-4 md:px-8 border-b border-black max-w-7xl  mx-8 my-8">
-      <div class="flex content-center pb-[150px] h-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 content-center ">
+      <div class="
+      flex 
+      content-center 
+      pb-[150px] 
+      h-full 
+    [@media(min-width:375px)_and_(max-width:667px)]:max-w-full
+      ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 content-center  [@media(min-width:375px)_and_(max-width:667px)]:w-full">
 
-          <div class="py-[170px]">
+          <div class="py-[170px] w-full">
             
-            <h1 class="font-[Koulen] text-9xl text-center sm:text-center sm:ml-4">STAKING</h1>
-            <p class="font-[Koulen] text-3xl text-center sm:text-center sm:ml-4">"Coming thoon.."</p>
-          </div>
+            <h1 class="
+            font-[Koulen] 
+            text-9xl 
+            text-center 
+            sm:text-center 
+            sm:ml-4
+
+            [@media(min-width:375px)_and_(max-width:667px)]:text-6xl
+            [@media(min-width:375px)_and_(max-width:667px)]:text-center
+         
+            ">STAKING
+            </h1>
+
+            <p class="font-[Koulen] 
+            text-3xl 
+            text-center 
+            sm:text-center 
+            sm:ml-4
+
+     
+            ">"Coming thoon.."</p>
           
-          <div class="absolute z-1 box-content w-[360px] h-[400px]  top-[90px] right-6  p-12 border border-black bg-white border-black"></div>
+            </div>
+          
+          <div class="absolute 
+              z-1 
+              box-content 
+              w-[360px] 
+              h-[400px]  
+              top-[90px] 
+              right-6  
+              p-12 border 
+              border-black 
+              bg-white 
+
+
+
+         
+              [@media(min-width:375px)_and_(max-width:667px)]:w-[125px]
+              [@media(min-width:375px)_and_(max-width:667px)]:h-[150px]
+              [@media(min-width:375px)_and_(max-width:667px)]:-ml-[130px]
+              [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[530px] 
+              [@media(min-width:375px)_and_(max-width:667px)]:inset-x-[158px] 
+          
+
+              rounded
+              ">
+          </div>
 
           <div class="relative gif-container md:ml-[250px] md:-my-[160px] border border-black h-auto w-full lg:my-[5px]  ">
             <!-- rectangle that holds the close and minimize button design -->
@@ -82,7 +206,15 @@
             </div>
 
             <!-- GIF file embed - Bear Eating Fruits -->
-            <img class="h-auto w-full"  src="/bear.png"/>
+            <img class="h-auto 
+            w-full
+       
+   
+            [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[530px] 
+        
+            " 
+           
+             src="/bear.png"/>
 
             
           </div>
@@ -95,11 +227,11 @@
 
 <script setup>
 const carouselTexts = [
-  "\" 60% of Game Revenue Used For Buybacks, Burns, + Airdrops to Loyal Beras\"",
-  "\"Future IRL Event Perks / Merch \"",
-  "\"Prioritized feedback + discord role\"",
-  "\"Access to Private Bera Cabal Telegram Chat\"",
-  "\"Join our community today\""
+  " 60% of Game Revenue Used For Buybacks, Burns, + Airdrops to Loyal Beras",
+  "Future IRL Event Perks / Merch ",
+  "Prioritized feedback + discord role",
+  "Access to Private Bera Cabal Telegram Chat",
+  "Join our community today"
 ]
 
 const currentIndex = ref(0)
