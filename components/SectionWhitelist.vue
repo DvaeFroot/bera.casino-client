@@ -43,7 +43,7 @@
       </div>
 
       <!-- FORM -->
-      <div class="relative z-20">
+      <div class="relative z-10">
         <Form @submit="onSubmit" :validation-schema="formSchema">
           <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[32px] font-medium">
             <div class="pb-2">Whitelist Application</div>
