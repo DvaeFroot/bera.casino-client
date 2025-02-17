@@ -1,9 +1,10 @@
 <template>
-  <div class="relative overflow-hidden flex flex-row justify-between bg-light-peach px-16 pb-12 pt-[100px]">
+  <!-- DESKTOP VIEW -->
+  <div class="relative hidden flex-row justify-between overflow-hidden bg-light-peach px-16 pb-12 pt-[100px] sm:flex">
     <!-- Decorations -->
-    <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  max-w-full w-[1200px] border border-black">
+    <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
     </div>
-    <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  max-w-full w-[1200px] border border-black">
+    <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
     </div>
     <div class="absolute  bottom-[-100px] right-[-400px] -z-0 h-[300px]  w-[1200px] border border-black">
     </div>
@@ -54,7 +55,7 @@
               <div>
                 <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Twitter/X username" />
-                <ErrorMessage name="xusername" class="text-red-500 text-sm" />
+                <ErrorMessage name="xusername" class="text-sm text-red-500" />
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -64,7 +65,7 @@
               <div>
                 <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Discord username" />
-                <ErrorMessage name="discordusername" class="text-red-500 text-sm" />
+                <ErrorMessage name="discordusername" class="text-sm text-red-500" />
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -74,7 +75,7 @@
               <div>
                 <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Telegram @" />
-                <ErrorMessage name="telegramusername" class="text-red-500 text-sm" />
+                <ErrorMessage name="telegramusername" class="text-sm text-red-500" />
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -84,7 +85,7 @@
               <div>
                 <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your BeraChain address" />
-                <ErrorMessage name="berachainaddress" class="text-red-500 text-sm" />
+                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
               </div>
             </div>
           </div>
@@ -95,7 +96,89 @@
         </Form>
       </div>
     </div>
+  </div>
 
+  <!-- MOBILE VIEW -->
+  <div class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden">
+    <!-- Decorations -->
+    <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
+    </div>
+    <div class="absolute left-[50px] top-[800px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
+    </div>
+    <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black">
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="relative">
+      <!-- FORM -->
+      <div class="relative z-10">
+        <Form @submit="onSubmit" :validation-schema="formSchema">
+          <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium">
+            <div class="pb-2">Whitelist Application</div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Twitter/X username?
+              </div>
+              <div>
+                <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your Twitter/X username" />
+                <ErrorMessage name="xusername" class="text-sm text-red-500" />
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Discord username?
+              </div>
+              <div>
+                <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your Discord username" />
+                <ErrorMessage name="discordusername" class="text-sm text-red-500" />
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Telegram @?
+              </div>
+              <div>
+                <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your Telegram @" />
+                <ErrorMessage name="telegramusername" class="text-sm text-red-500" />
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your BeraChain address?
+              </div>
+              <div>
+                <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your BeraChain address" />
+                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-row-reverse">
+            <button
+              class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button>
+          </div>
+        </Form>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="relative z-10 mt-10">
+      <div class="bg-red rounded-b-[25px] border border-black">
+        <div class="flex h-[50px] w-full flex-row-reverse border-b border-black bg-egg-white p-2 ">
+          <div class="flex items-center justify-center border border-black p-2 text-[25px] font-bold">
+            <p>X</p>
+          </div>
+          <div class="mr-2 border border-black px-3 pb-4 text-center text-[25px] font-bold">-</div>
+        </div>
+        <div class="rounded-b-[25px] bg-white p-16">
+          <img src="/bear.png" class="w-[300px]" />
+          <div><i>./bear.png</i></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
