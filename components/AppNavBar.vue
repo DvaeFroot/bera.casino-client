@@ -24,7 +24,7 @@
   </div>
 
   <!-- MOBILE VIEW -->
-  <div class="sticky top-0 z-20 flex sm:hidden flex-row justify-between border-b border-black bg-light-peach px-4 py-2">
+  <div class="sticky top-0 z-20 flex flex-row justify-between border-b border-black bg-light-peach px-4 py-2 sm:hidden">
     <div class="flex w-[200px] flex-row justify-between">
       <div class="w-60">
         <img src="/beracasino.png" class="scale-100 cursor-pointer" />
@@ -39,7 +39,7 @@
           <div class="relative z-50 flex flex-col">
             <DialogTitle>
               <div
-                class="flex flex-row justify-between border border-b border-l-0 border-r-0 border-t-0 border-black px-4 py-2 min-h-[58.7px]">
+                class="flex min-h-[58.7px] flex-row justify-between border border-b border-l-0 border-r-0 border-t-0 border-black px-4 py-2">
                 <div>
                   <img src="/beracasino.png" class="h-[41.7px] w-[200px] scale-100 cursor-pointer" />
                 </div>
@@ -51,15 +51,15 @@
             <DialogDescription>
               <div class="mt-4 flex flex-col items-end justify-evenly">
                 <div @click="setIsOpen(false)"
-                  class="cursor-pointer px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
+                  class="cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
                   WHITELIST
                 </div>
                 <div @click="setIsOpen(false)"
-                  class="mt-4  cursor-pointer px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
+                  class="mt-4  cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
                   UTILITY
                 </div>
                 <div @click="setIsOpen(false)"
-                  class="mt-4 cursor-pointer px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
+                  class="mt-4 cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
                   STAKING
                 </div>
 
