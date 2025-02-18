@@ -2,35 +2,18 @@
   <!-- DESKTOP VIEW -->
   <div class="relative hidden flex-row justify-between overflow-hidden bg-light-peach px-16 pb-12 pt-[100px] sm:flex">
     <!-- Decorations -->
-    <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
-    </div>
-    <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
-    </div>
-    <div class="absolute  bottom-[-100px] right-[-400px] -z-0 h-[300px]  w-[1200px] border border-black">
-    </div>
+    <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"></div>
+    <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> </div>
+    <div class="absolute  bottom-[-100px] right-[-400px] -z-0 h-[300px]  w-[1200px] border border-black"> </div>
 
     <!-- Left Section -->
-    <div class="relative z-10 w-[800px]">
-      <div class="bg-red absolute left-[225px] top-[100px] rounded-b-[25px] border border-black">
-        <div class="flex h-[50px] w-full flex-row-reverse border-b border-black bg-egg-white p-2">
-          <div class="flex items-center justify-center border border-black p-2 text-[25px] font-bold">
-            <p>X</p>
+    <div class="flex w-[800px] items-center justify-center">
+      <div class="relative flex h-full w-[400px] items-center justify-center">
+        <div class="absolute z-10">
+          <div class="z-10 border border-black bg-white p-8">
+            <img src="/bear.png" class="w-[300px]" />
+            <div><i>./bear.gif</i></div>
           </div>
-          <div class="mr-2 border border-black px-3 pb-4 text-center text-[25px] font-bold">-</div>
-        </div>
-        <div class="rounded-b-[25px] bg-white p-16">
-          <img src="/bear.png" class="w-[300px]" />
-        </div>
-      </div>
-      <div class="bg-red absolute left-[200px] top-[75px] rounded-b-[25px] border border-black">
-        <div class="flex h-[50px] w-full flex-row-reverse border-b border-black bg-egg-white p-2 ">
-          <div class="flex items-center justify-center border border-black p-2 text-[25px] font-bold">
-            <p>X</p>
-          </div>
-          <div class="mr-2 border border-black px-3 pb-4 text-center text-[25px] font-bold">-</div>
-        </div>
-        <div class="rounded-b-[25px] bg-white p-16">
-          <img src="/bear.png" class="w-[300px]" />
         </div>
       </div>
     </div>
@@ -108,8 +91,18 @@
     <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black">
     </div>
 
-    <!-- TOP SECTION -->
-    <div class="relative">
+    <!-- TOP  SECTION -->
+    <div class="flex">
+      <div class="relative flex items-center justify-center h-full w-full">
+        <div class="bg-white border border-black p-2">
+          <img src="/bear.png" class="mx-auto w-[100px]" />
+          <div><i>./bear.gif</i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="relative mt-5">
       <!-- FORM -->
       <div class="relative z-10">
         <Form @submit="onSubmit" :validation-schema="formSchema">
@@ -164,21 +157,6 @@
       </div>
     </div>
 
-    <!-- BOTTOM SECTION -->
-    <div class="relative z-10 mt-10">
-      <div class="bg-red rounded-b-[25px] border border-black">
-        <div class="flex h-[50px] w-full flex-row-reverse border-b border-black bg-egg-white p-2 ">
-          <div class="flex items-center justify-center border border-black p-2 text-[25px] font-bold">
-            <p>X</p>
-          </div>
-          <div class="mr-2 border border-black px-3 pb-4 text-center text-[25px] font-bold">-</div>
-        </div>
-        <div class="rounded-b-[25px] bg-white p-16">
-          <img src="/bear.png" class="w-[300px]" />
-          <div><i>./bear.png</i></div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
