@@ -1,96 +1,121 @@
 <template>
   <div class="min-h-screen bg-light-peach">
 
-     <!-- Decorations -->
-        
-     
-     <!-- 1st Decoration box -->
+    <!-- Decorations -->
+
+
+    <!-- 1st Decoration box -->
     <div class="
     absolute 
-    left-[400px] 
+    right-[150px] 
     top-[64px] 
     h-[300px] 
-    w-[1200px] 
+    w-full 
     border 
     border-black 
     overflow-hidden
     -z-0 
  
-    [@media(min-width:375px)_and_(max-width:667px)]:w-full
+
+    md:w-[980px]
     
-
-
 
     ">
     </div>
 
-  <!-- 2nd Decoration box -->
+    <!-- 2nd Decoration box -->
     <div class="absolute 
     left-[-700px] 
     top-[400px] 
     h-[300px] 
-    w-[1200px] 
+    w-[980px] 
     border 
     border-black 
+     overflow-hidden
     -z-0
+      [@media(min-width:768px)]:h-[158px]
     
     ">
-   </div>
-
+    </div>
+    <!-- 3rd Decoration box -->
     <div class="
     absolute 
-    right-[-400px] 
-    bottom-[-200px] 
-    h-[300px] 
-    w-[1200px] 
+
+    right-[150px] 
+    bottom-[-200px]
+    top-[783px] 
+    h-[680px]
+    w-full 
     border 
     border-black 
-    -z-0">
-    </div>
-    
-    
-    <!-- Stacked Box background for the bear GIF -->
-    <div class="
-    absolute 
-    box-content 
-    w-[400px] 
-    h-[460px] 
-    bottom-8 
-    inset-x-[160px] 
-   
-    p-12 border 
-    border-black 
-    bg-white 
+     overflow-hidden
+    -z-0
+    invisible
 
-      [@media(min-width:375px)_and_(max-width:667px)]:w-[213px]
-      [@media(min-width:375px)_and_(max-width:667px)]:h-[303px]
-      [@media(min-width:375px)_and_(max-width:667px)]:-ml-[130px]
-      [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[133px] 
-      [@media(min-width:375px)_and_(max-width:667px)]:inset-x-[185px] 
-     
+
+
+    [@media(min-width:768px)]:invisible
+    [@media(min-width:881px)]:visible
+    [@media(min-width:881px)]:inset-y-[818px]
+    [@media(min-width:881px)]:inset-x-[818px]
     
-   
-    
-      [@media(min-width:1024px)]:w-[400px] 
-      [@media(min-width:1024px)]:h-[460px] 
-      [@media(min-width:1024px)]:ml-[5px] 
-      [@media(min-width:1024px)]:top-[180px]
-      [@media(min-width:1024px)]:rounded
-    
-      lg:ml-[90px] 
-      lg:top-[180px] 
+
+
     ">
     </div>
+
+
 
     <!-- First Section -->
-    <section class="relative py-16 px-4 md:px-8 border-b border-black lg:mx-auto">
+    <section class="relative py-16 px-4 md:px-8 border-b border-black">
       <!-- <div class="absolute z-1 box-content max-w-96 h-80 bottom-8 inset-x-20  p-12 border-2 bg-white border-black"></div> -->
 
-      <div class="max-w-6xl lg:mx-auto">
-        <div class="flex flex-col grid grid-cols-1 md:grid-cols-2 gap-16 items-center lg:mx-auto lg:gap-32">
+      <div class="max-w-6xl ">
+        <div class=" grid grid-cols-1 md:grid-cols-2 gap-16 items-center ">
+
+          <!-- Stacked Box #1 background for the bear GIF -->
+          <div class="
+          absolute
+          box-content 
+   
+          w-[220px] 
+          h-[280px] 
+          bottom-10 
+          inset-x-[30px]  
+          inset-y-[85px]  
+          p-12 border 
+          border-black 
+          bg-white 
+          rounded
+
+        
+          [@media(min-width:768px)_and_(max-width:782px)]:w-[210px]
+          [@media(min-width:768px)_and_(max-width:782px)]:h-[270px] 
+          [@media(min-width:768px)_and_(max-width:782px)]:inset-x-[50px]  
+          [@media(min-width:768px)_and_(max-width:782px)]:inset-y-[85px]  
           
+          [@media(min-width:1024px)_and_(max-width:1079px)]:h-[430px]
+          [@media(min-width:1024px)_and_(max-width:1079px)]:w-[330px]
+          [@media(min-width:1024px)_and_(max-width:1079px)]:inset-x-[70px]
+        
+          [@media(min-width:1080px)]:h-[440px]
+          [@media(min-width:1080px)]:w-[350px]
+          [@media(min-width:1080px)]:inset-x-[70px]
+
+          [@media(min-width:1189px)]:h-[530px]
+          [@media(min-width:1189px)]:w-[430px]
+          [@media(min-width:1189px)]:inset-x-[70px]
+
+         
+
+
+          ">
+          </div>
+
           <!-- GIF Box -->
-            <div class="relative bg-white  border border-black h-84">
+
+
+          <div class="relative bg-white  border border-black h-84">
             <!-- rectangle that holds the close and minimize button design -->
             <div class=" border-b border-black bg-white w-full h-8 ">
               <div class="flex flex-row-reverse h-full">
@@ -98,22 +123,21 @@
                 <p class="border-l border-black pl-3 pr-3">_</p>
               </div>
             </div>
-              
-                
+
+
             <!-- GIF file embed - Bear Biking-->
             <img src="/bikingbear.gif" alt="Sample GIF" class="w-full h-auto rounded " />
             <!--<div class="relative bg-white  border border-black h-84 bottom-3"></div>-->
-                            
+
           </div>
-          
-          
-         
+
+
 
           <div class="absolute mt-2 ml-2  bg-white  border border-black h-84">
-          
+
 
             <!-- GIF file embed -->
-    
+
           </div>
 
           <!-- Simple Text Carousel -->
@@ -133,30 +157,58 @@
         </div>
       </div>
     </section>
+
+    <!-- Second Section -->
+    <section class="relative py-16 px-4 md:px-8 border-b border-black max-w-7xl  mx-8 ">
       
-     <!-- Second Section -->
-    <section class="relative py-16 px-4 md:px-8 border-b border-black max-w-7xl  mx-8 my-8">
       <div class="
       flex 
       content-center 
       pb-[150px] 
       h-full 
-    [@media(min-width:375px)_and_(max-width:667px)]:max-w-full
-      ">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 content-center  [@media(min-width:375px)_and_(max-width:667px)]:w-full">
 
-          <div class="py-[170px] w-full">
+
+      
+    ">
+        <div class="
+        grid 
+        grid-cols-1 
+        md:grid-cols-2 
+        gap-4 
+        content-center 
+
+        ">
+
+            <div class="
+            py-[80px] 
+            w-full
+
+            sm:py-[170px] 
             
+            ">
+
             <h1 class="
             font-[Koulen] 
-            text-9xl 
+            text-6xl
             text-center 
+
+
+
+            [@media(min-width:768px)]:text-8xl
+            [@media(min-width:768px)]:text-center
+            
             sm:text-center 
             sm:ml-4
 
-            [@media(min-width:375px)_and_(max-width:667px)]:text-6xl
-            [@media(min-width:375px)_and_(max-width:667px)]:text-center
-         
+            md:text-9xl
+            md:text-center
+
+
+            [@media(min-width:1024px)]:text-9xl
+          
+
+            
+
             ">STAKING
             </h1>
 
@@ -165,12 +217,14 @@
             text-center 
             sm:text-center 
             sm:ml-4
+           
 
      
             ">"Coming thoon.."</p>
-          
-            </div>
-          
+
+          </div>
+
+          <!-- stacked box of bear eating gif -->
           <div class="absolute 
               z-1 
               box-content 
@@ -180,23 +234,71 @@
               right-6  
               p-12 border 
               border-black 
-              bg-white 
+              bg-white
+
+   
+              [@media(min-width:1024px)]:ml-[150px]
+              [@media(min-width:1024px)]:h-[330px]
+              [@media(min-width:1024px)]:w-[260px]
+              [@media(min-width:1024px)]:inset-x-[450px]
+              [@media(min-width:1024px)]:inset-y-[110px]
+
+              [@media(min-width:773px)_and_(max-width:782px)]:h-[220px]
+              [@media(min-width:773px)_and_(max-width:782px)]:w-[215px]
+              [@media(min-width:773px)_and_(max-width:782px)]:inset-x-[380px]
+              [@media(min-width:773px)_and_(max-width:782px)]:inset-y-[180px]
+
+              [@media(min-width:768px)_and_(max-width:782px)]:flex
+              [@media(min-width:768px)_and_(max-width:782px)]:h-[210px]
+              [@media(min-width:768px)_and_(max-width:782px)]:w-[190px]
+              [@media(min-width:768px)_and_(max-width:782px)]:inset-x-[380px]
+              [@media(min-width:768px)_and_(max-width:782px)]:inset-y-[180px]
+
+              [@media(min-width:800px)_and_(max-width:1020px)]:w-[190px]
+              [@media(min-width:800px)_and_(max-width:1020px)]:h-[211px]
+              [@media(min-width:800px)_and_(max-width:1020px)]:inset-x-[340px]
+              [@media(min-width:800px)_and_(max-width:1020px)]:inset-y-[80px]
 
 
 
-         
-              [@media(min-width:375px)_and_(max-width:667px)]:w-[125px]
-              [@media(min-width:375px)_and_(max-width:667px)]:h-[150px]
-              [@media(min-width:375px)_and_(max-width:667px)]:-ml-[130px]
-              [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[530px] 
-              [@media(min-width:375px)_and_(max-width:667px)]:inset-x-[158px] 
+              [@media(min-width:375px)_and_(max-width:767px)]:w-[125px]
+              [@media(min-width:375px)_and_(max-width:767px)]:h-[150px]
+              [@media(min-width:375px)_and_(max-width:767px)]:-ml-[130px]
+              [@media(min-width:375px)_and_(max-width:767px)]:inset-y-[530px] 
+              [@media(min-width:375px)_and_(max-width:767px)]:inset-x-[158px] 
+       
           
 
               rounded
               ">
           </div>
 
-          <div class="relative gif-container md:ml-[250px] md:-my-[160px] border border-black h-auto w-full lg:my-[5px]  ">
+          <!-- GIF container of Bear Eating Fruits -->
+          <div class="relative gif-container 
+    
+          border 
+          border-black 
+          h-auto 
+          w-full 
+
+          lg:w-[380px]
+          lg:top-8
+        
+         [@media(min-width:768px)_and_(max-width:789px)]:h-[314px]
+
+         [@media(min-width:768px)_and_(max-width:789px)]:inset-x-[40px]
+         [@media(min-width:768px)_and_(max-width:789px)]:inset-y-[100px]
+
+         [@media(min-width:800px)_and_(max-width:1020px)]:h-[314px]
+         
+
+          [@media(min-width:1024px)]:inset-x-[120px]
+          [@media(min-width:1024px)]:h-[412px]
+
+          [@media(min-width:768px)_and_(max-width:782px)]:-inset-x-[230px]
+          [@media(min-width:768px)_and_(max-width:782px)]:inset-y-[250px]
+          [@media(min-width:768px)_and_(max-width:782px)]:h-[335px]
+          ">
             <!-- rectangle that holds the close and minimize button design -->
             <div class="border-b border-black bg-white w-full h-8 ">
               <div class="flex flex-row-reverse h-full">
@@ -206,26 +308,23 @@
             </div>
 
             <!-- GIF file embed - Bear Eating Fruits -->
-            <img class="h-auto 
+            <img class="
+            h-auto 
             w-full
-       
-   
-            [@media(min-width:375px)_and_(max-width:667px)]:inset-y-[530px] 
-        
-            " 
-           
-             src="/bear.png"/>
 
-            
+            " src="/bear.png" />
+
+
           </div>
 
         </div>
       </div>
     </section>
-  </div>  
+  </div>
 </template>
 
 <script setup>
+
 const carouselTexts = [
   " 60% of Game Revenue Used For Buybacks, Burns, + Airdrops to Loyal Beras",
   "Future IRL Event Perks / Merch ",
