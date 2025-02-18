@@ -8,14 +8,10 @@
     <div class="absolute left-[-700px] top-[400px] -z-0 h-[300px] w-[980px] overflow-hidden border border-black
                 [@media(min-width:768px)]:h-[158px]"></div>
     <!-- 3rd Decoration box -->
-    <div class="invisible absolute bottom-[-200px] right-[150px] top-[783px] -z-0 h-[680px] w-full overflow-hidden border border-black
-                [@media(min-width:768px)]:invisible
-                [@media(min-width:881px)]:visible
-                [@media(min-width:881px)]:inset-x-[818px]
-                [@media(min-width:881px)]:inset-y-[818px]
+    <div class="absolute h-[200px] bottom-[0px] left-[500px] -z-0 w-full overflow-hidden border border-black
                 "></div>
     <!-- First Section -->
-    <section class="relative flex justify-center border-b border-black px-4 py-16 md:px-8">
+    <section id="section-utility" class="relative flex justify-center border-b border-black px-4 py-16 md:px-8">
       <!-- <div class="absolute z-1 box-content max-w-96 h-80 bottom-8 inset-x-20  p-12 border-2 bg-white border-black"></div> -->
       <div class="max-w-6xl ">
         <div class=" grid grid-cols-1 items-center gap-16 md:grid-cols-2 ">
@@ -23,7 +19,7 @@
           <div class="h-84 relative  border border-black bg-white p-4">
             <!-- rectangle that holds the close and minimize button design -->
             <!-- GIF file embed - Bear Biking-->
-            <img src="/bikingbear.gif" alt="Sample GIF" class="h-[400px] w-[400px]" />
+            <img src="/bikingbear.gif" alt="Sample GIF" class="sm:h-[450px] w-[400px]" />
             <div>./bikingbear.gif</div>
             <!--<div class="relative bg-white  border border-black h-84 bottom-3"></div>-->
           </div>
@@ -48,7 +44,8 @@
     </section>
 
     <!-- Second Section -->
-    <section class="relative flex justify-center mx-auto max-w-7xl border-b border-black px-4 py-16  md:px-8 ">
+    <section id="section-staking"
+      class="relative flex justify-center mx-auto max-w-7xl border-b border-black px-4 py-8  md:px-8 ">
       <div class=" flex h-full content-center pb-[150px]">
         <div class=" grid grid-cols-1 content-center gap-4 md:grid-cols-2">
           <div class=" w-full py-[80px] sm:py-[170px]">

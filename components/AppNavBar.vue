@@ -6,15 +6,18 @@
       <div class=""><img src="/beracasino.png" class="scale-100 cursor-pointer" />
       </div>
       <div class="ml-16 flex flex-row items-center justify-evenly">
-        <div class="cursor-pointer px-4 font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
+        <a href="#section-desktop-whitelist"
+          class="cursor-pointer px-4 select-none font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
           WHITELIST
-        </div>
-        <div class="cursor-pointer px-4 font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
+        </a>
+        <a href="#section-utility"
+          class="cursor-pointer px-4 select-none font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
           UTILITY
-        </div>
-        <div class="cursor-pointer px-4 font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
+        </a>
+        <a href="#section-staking"
+          class="cursor-pointer px-4 select-none font-[Koulen] text-2xl hover:border-b-4 hover:border-black">
           STAKING
-        </div>
+        </a>
       </div>
     </div>
     <div class="flex flex-row items-center">
@@ -50,18 +53,18 @@
             </DialogTitle>
             <DialogDescription>
               <div class="mt-4 flex flex-col items-end justify-evenly">
-                <div @click="setIsOpen(false)"
-                  class="cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
+                <a href="#section-mobile-whitelist" @click="setIsOpen(false)"
+                  class="cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 focus:outline-none hover:border-black">
                   WHITELIST
-                </div>
-                <div @click="setIsOpen(false)"
+                </a>
+                <a href="#section-utility" @click="setIsOpen(false)"
                   class="mt-4  cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
                   UTILITY
-                </div>
-                <div @click="setIsOpen(false)"
+                </a>
+                <a href="#section-staking" @click="setIsOpen(false)"
                   class="mt-4 cursor-pointer select-none px-4 font-[Koulen] text-4xl hover:border-b-4 hover:border-black">
                   STAKING
-                </div>
+                </a>
 
                 <div class="mt-4 flex flex-row items-center px-4">
                   <Icon @click="setIsOpen(false)" name="prime:discord"

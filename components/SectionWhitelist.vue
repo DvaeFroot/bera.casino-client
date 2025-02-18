@@ -1,6 +1,7 @@
 <template>
   <!-- DESKTOP VIEW -->
-  <div class="relative hidden flex-row justify-between overflow-hidden bg-light-peach px-16 pb-12 pt-[100px] sm:flex">
+  <div id="section-desktop-whitelist"
+    class="relative hidden flex-row justify-between overflow-hidden bg-light-peach px-16 pb-12 pt-[100px] sm:flex">
     <!-- Decorations -->
     <div class="absolute  left-[400px] top-[50px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"></div>
     <div class="absolute  left-[-400px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> </div>
@@ -82,7 +83,8 @@
   </div>
 
   <!-- MOBILE VIEW -->
-  <div class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden">
+  <div id="section-mobile-whitelist"
+    class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden">
     <!-- Decorations -->
     <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
     </div>
