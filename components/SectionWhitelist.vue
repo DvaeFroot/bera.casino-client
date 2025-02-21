@@ -44,12 +44,14 @@
             </div>
             <div class="pb-4 text-[23px] font-light">
               <div class="pb-2">
-                What is your Discord username?
+                What is your Discord ID?
               </div>
               <div>
                 <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Discord username" />
                 <ErrorMessage name="discordusername" class="text-sm text-red-500" />
+                <div v-if="discordDetails.username != ''" class="text-sm text-green-900">
+                  Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -122,12 +124,14 @@
             </div>
             <div class="pb-4 text-[15px] font-light">
               <div class="pb-2">
-                What is your Discord username?
+                What is your Discord ID?
               </div>
               <div>
                 <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Discord username" />
                 <ErrorMessage name="discordusername" class="text-sm text-red-500" />
+                <div v-if="discordDetails.username != ''" class="text-sm text-green-900">
+                  Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div>
               </div>
             </div>
             <div class="pb-4 text-[15px] font-light">
@@ -170,13 +174,14 @@ const onSubmit = (values: any) => {
   console.log(values)
   return;
 }
+const discordDetails = ref<{ username: string, globalName: string }>({
+  username: "",
+  globalName: ""
+});
 
 const formSchema = {
   xusername: (value: any) => {
-    console.log(value)
-    if (!value) {
-      return 'This field is required';
-    }
+    if (!value) return 'This field is required';
 
     const regex = /^[A-Za-z0-9_]{1,15}$/;
     if (!regex.test(value)) {
@@ -185,23 +190,22 @@ const formSchema = {
     return true;
 
   },
-  discordusername: (value: any) => {
+  discordusername: async (value: any) => {
+    if (!value) return 'This field is required';
 
-    if (!value) {
-      return 'This field is required';
+    const { data }: { data: any } = await useSearchDiscordId(value);
+    discordDetails.value = { username: "", globalName: "" }
+    if (data.value.username == undefined) {
+      return "This Discord user ID does not exist!"
     }
-
-    const regex = /^[A-Za-z0-9_-]{2,32}$/;
-    if (!regex.test(value)) {
-      return 'Invalid Discord username'
+    discordDetails.value = {
+      "username": data.value.username,
+      "globalName": data.value.raw.global_name
     }
     return true;
   },
   telegramusername: (value: any) => {
-
-    if (!value) {
-      return 'This field is required';
-    }
+    if (!value) return 'This field is required';
 
     const regex = /^[A-Za-z][A-Za-z0-9_]{4,31}$/;
     if (!regex.test(value)) {
