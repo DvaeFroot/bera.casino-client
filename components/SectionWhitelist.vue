@@ -29,7 +29,7 @@
 
       <!-- FORM -->
       <div class="relative z-10">
-        <Form @submit="onSubmit" :validation-schema="formSchema">
+        <form @submit.prevent="onSubmit">
           <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[32px] font-medium">
             <div class="pb-2">Whitelist Application</div>
             <div class="pb-4 text-[23px] font-light">
@@ -37,9 +37,16 @@
                 What is your Twitter/X username?
               </div>
               <div>
-                <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                <input v-model="xUsername" v-bind="xUsernameAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Twitter/X username" />
-                <ErrorMessage name="xusername" class="text-sm text-red-500" />
+                <div name="xusername" class="mt-3 text-sm text-red-500"> {{ errors.xUsername }}</div>
+                <div v-if="isSearchingXUsername" class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Twitter/X Username...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div v-if="xDetails.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ xDetails.username }}] [PUBLIC NAME: {{ xDetails.publicName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -47,11 +54,16 @@
                 What is your Discord ID?
               </div>
               <div>
-                <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your Discord username" />
-                <ErrorMessage name="discordusername" class="text-sm text-red-500" />
-                <div v-if="discordDetails.username != ''" class="text-sm text-green-900">
-                  Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div>
+                <input v-model="discordId" v-bind="discordidAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
+                <div class="mt-3 text-sm text-red-500">{{ errors.discordId }}
+                </div>
+                <div v-if="isSearchingDiscordId" class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Discord ID...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div v-if="discordDetails.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ discordDetails.username }}] [GLOBAL NAME: {{ discordDetails.globalName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -59,9 +71,16 @@
                 What is your Telegram @?
               </div>
               <div>
-                <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your Telegram @" />
-                <ErrorMessage name="telegramusername" class="text-sm text-red-500" />
+                <input v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Telegram @" />
+                <div class="mt-3 text-sm text-red-500">{{ errors.telegramUsername }} </div>
+                <div v-if="isSearchingTelegramUsername"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Telegram Username...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div v-if="telegramDetails.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ telegramDetails.username }}] [GLOBAL NAME: {{ telegramDetails.publicName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -69,9 +88,10 @@
                 What is your BeraChain address?
               </div>
               <div>
-                <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                <input v-model="berachainAdd" v-bind="berachainAddAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your BeraChain address" />
-                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
+                <div class="text-sm text-red-500"> {{ errors.berachainAdd }}</div>
               </div>
             </div>
           </div>
@@ -79,7 +99,7 @@
             <button
               class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[24px] font-normal hover:bg-light-brown">Submit</button>
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   </div>
@@ -97,8 +117,8 @@
 
     <!-- TOP  SECTION -->
     <div class="flex">
-      <div class="relative flex items-center justify-center h-full w-full">
-        <div class="bg-white border border-black p-2">
+      <div class="relative flex h-full w-full items-center justify-center">
+        <div class="border border-black bg-white p-2">
           <img src="/bear.png" class="mx-auto w-[100px]" />
           <div><i>./bear.gif</i></div>
         </div>
@@ -109,7 +129,7 @@
     <div class="relative mt-5">
       <!-- FORM -->
       <div class="relative z-10">
-        <Form @submit="onSubmit" :validation-schema="formSchema">
+        <Form @submit="onSubmit">
           <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium">
             <div class="pb-2">Whitelist Application</div>
             <div class="pb-4 text-[15px] font-light">
@@ -167,58 +187,143 @@
 </template>
 
 <script lang="ts" setup>
-import { Form, Field, ErrorMessage } from 'vee-validate';
+import { useForm, Form, Field, ErrorMessage } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/yup'
+import * as yup from 'yup';
 
-// TO DO: Connect submit endpoint here
-const onSubmit = (values: any) => {
-  console.log(values)
+
+const { errors, handleSubmit, defineField, setErrors } = useForm({
+  validationSchema: toTypedSchema(yup.object({
+    xUsername: yup.string().required('Twitter/X Username is required').test('check-x-username', 'Username does not exist!', async (value) => {
+      try {
+        await validateXUsername(value);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }),
+    discordId: yup.string().required("Discord ID is required").test('check-discord-id', 'Discord ID does not exist!', async (value) => {
+      try {
+        await validateDiscordId(value);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }),
+    telegramUsername: yup.string().required("Telegram Username is required").test('check-telegram-username', 'Telegram Username does not exist!', async (value) => {
+      try {
+        await validateTelegramUsername(value);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }),
+    berachainAdd: yup.string().required()
+  }))
+});
+
+const [xUsername, xUsernameAttrs] = defineField('xUsername', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
+const [discordId, discordidAttrs] = defineField('discordId', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
+const [telegramUsername, telegramUsernameAttrs] = defineField('telegramUsername', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
+const [berachainAdd, berachainAddAttrs] = defineField('berachainAdd', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
+
+const onSubmit = handleSubmit(values => {
+  console.log("This just fucking works lol")
   return;
+})
+
+let currentAbortControllerX: null | AbortController = null
+let currentAbortControllerDiscord: null | AbortController = null
+let currentAbortControllerTelegram: null | AbortController = null
+
+// TWITTER/X
+const xDetails = ref<{ username: string, publicName: string }>({
+  username: "",
+  publicName: ""
+})
+const isSearchingXUsername = ref<Boolean>(false);
+let prevXUsername = ""
+const validateXUsername = async (username: string) => {
+  if (prevXUsername == username && (errors.value.xUsername == "" || errors.value.xUsername == undefined)) return
+  else prevXUsername = username
+  setErrors({ xUsername: "" })
+
+  if (currentAbortControllerX != null) {
+    currentAbortControllerX.abort()
+  }
+  currentAbortControllerX = new AbortController()
+
+  if (username == "") throw new Error("Error")
+  xDetails.value = { username: "", publicName: "" }
+
+  isSearchingXUsername.value = true
+  const { data } = await useSearchTwitterUsername(username, currentAbortControllerX)
+  if (data.value != null) {
+    isSearchingXUsername.value = false
+  }
+
+  if ('error' in data.value) throw new Error("Error")
+  xDetails.value = { username: data.value.username, publicName: data.value.publicName }
+  setErrors({ xUsername: "" })
 }
+
+
+// DISCORD
 const discordDetails = ref<{ username: string, globalName: string }>({
   username: "",
   globalName: ""
 });
+const isSearchingDiscordId = ref<Boolean>(false);
+let prevDiscordId = ""
+const validateDiscordId = async (id: string) => {
+  if (prevDiscordId == id && (errors.value.discordId == "" || errors.value.discordId == undefined)) return
+  else prevDiscordId = id
+  setErrors({ discordId: "" })
 
-const formSchema = {
-  xusername: (value: any) => {
-    if (!value) return 'This field is required';
+  if (currentAbortControllerDiscord != null) {
+    currentAbortControllerDiscord.abort()
+  }
+  if (id == "") throw new Error("Error");
+  currentAbortControllerDiscord = new AbortController()
+  discordDetails.value = { username: "", globalName: "" }
 
-    const regex = /^[A-Za-z0-9_]{1,15}$/;
-    if (!regex.test(value)) {
-      return 'Invalid Twitter/X username'
-    }
-    return true;
+  isSearchingDiscordId.value = true
+  const { data } = await useSearchDiscordId(id, currentAbortControllerDiscord)
+  isSearchingDiscordId.value = false
 
-  },
-  discordusername: async (value: any) => {
-    if (!value) return 'This field is required';
+  if ('message' in data) setErrors({ discordId: "Discord ID does not exist!" });
+  discordDetails.value = { username: data.username, globalName: data.raw.global_name }
+  setErrors({ discordId: "" })
+}
 
-    const { data }: { data: any } = await useSearchDiscordId(value);
-    discordDetails.value = { username: "", globalName: "" }
-    if (data.value.username == undefined) {
-      return "This Discord user ID does not exist!"
-    }
-    discordDetails.value = {
-      "username": data.value.username,
-      "globalName": data.value.raw.global_name
-    }
-    return true;
-  },
-  telegramusername: (value: any) => {
-    if (!value) return 'This field is required';
 
-    const regex = /^[A-Za-z][A-Za-z0-9_]{4,31}$/;
-    if (!regex.test(value)) {
-      return 'Invalid Telegram username'
-    }
-    return true;
-  },
-  berachainaddress: (value: any) => {
+// TELEGRAM
+const telegramDetails = ref<{ username: string, publicName: string }>({
+  username: "",
+  publicName: ""
+});
+const isSearchingTelegramUsername = ref<Boolean>(false);
+let prevTelegramUsername = ""
+const validateTelegramUsername = async (username: string) => {
+  if (prevTelegramUsername == username && (errors.value.telegramUsername == "" || errors.value.discordId == undefined)) return
+  else prevTelegramUsername = username
+  setErrors({ telegramUsername: "" })
 
-    if (!value) {
-      return 'This field is required';
-    }
-    return true;
-  },
-};
+  if (currentAbortControllerTelegram != null) {
+    currentAbortControllerTelegram.abort()
+  }
+  if (username == "") return
+  currentAbortControllerTelegram = new AbortController()
+  telegramDetails.value = { username: "", publicName: "" }
+
+  isSearchingTelegramUsername.value = true
+  const { data, error } = await useSearchTelegramUsername(username, currentAbortControllerTelegram)
+  if (data.value != null) {
+    isSearchingTelegramUsername.value = false
+  }
+
+  if ('error' in data.value) throw new Error("Error");
+  telegramDetails.value = { username: data.value.username, publicName: data.value.publicName }
+  setErrors({ telegramUsername: "" })
+}
 </script>

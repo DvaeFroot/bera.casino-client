@@ -16,9 +16,13 @@
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@vee-validate/nuxt": "^4.15.0",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.7.9",
     "nuxt": "^3.15.4",
     "postcss": "^8.5.2",
+    "puppeteer": "^24.2.1",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-loading-overlay": "^6.0.6",
+    "vue-router": "latest",
+    "vue-spinner": "^1.0.4"
   }
 }

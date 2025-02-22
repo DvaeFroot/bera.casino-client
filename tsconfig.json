@@ -1,4 +1,15 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "dom", // Enables access to DOM types, including `document`
+      "esnext" // Supports modern ECMAScript features
+    ],
+    "moduleResolution": "node", // Helps TypeScript resolve modules correctly
+    "module": "ESNext", // Use ES modules syntax
+    "strict": true, // Enable strict type-checking options
+    "esModuleInterop": true, // For importing non-ESM packages (e.g., Puppeteer)
+    "skipLibCheck": true // Skip type checking of declaration files
+  }
 }
