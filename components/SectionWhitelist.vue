@@ -41,12 +41,14 @@
                   class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Twitter/X username" />
                 <div name="xusername" class="mt-3 text-sm text-red-500"> {{ errors.xUsername }}</div>
-                <div v-if="isSearchingXUsername" class="align-center flex flex-row items-center text-sm text-blue-900">
+                <div v-if="formFieldProps.xUsername.isSearching"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
                   Searching Twitter/X Username...
                   <LoaderSpinner class="scale-[0.3]" />
                 </div>
-                <div v-if="xDetails.username != ''" class="mt-3 text-sm text-green-900">
-                  [USERNAME: {{ xDetails.username }}] [PUBLIC NAME: {{ xDetails.publicName }}]</div>
+                <div v-if="formFieldProps.xUsername.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.xUsername.details.username }}] [PUBLIC NAME: {{
+                    formFieldProps.xUsername.details.publicName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -58,12 +60,14 @@
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
                 <div class="mt-3 text-sm text-red-500">{{ errors.discordId }}
                 </div>
-                <div v-if="isSearchingDiscordId" class="align-center flex flex-row items-center text-sm text-blue-900">
+                <div v-if="formFieldProps.discordId.isSearching"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
                   Searching Discord ID...
                   <LoaderSpinner class="scale-[0.3]" />
                 </div>
-                <div v-if="discordDetails.username != ''" class="mt-3 text-sm text-green-900">
-                  [USERNAME: {{ discordDetails.username }}] [GLOBAL NAME: {{ discordDetails.globalName }}]</div>
+                <div v-if="formFieldProps.discordId.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.discordId.details.username }}] [GLOBAL NAME: {{
+                    formFieldProps.discordId.details.publicName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -74,13 +78,14 @@
                 <input v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Telegram @" />
                 <div class="mt-3 text-sm text-red-500">{{ errors.telegramUsername }} </div>
-                <div v-if="isSearchingTelegramUsername"
+                <div v-if="formFieldProps.telegramUsername.isSearching"
                   class="align-center flex flex-row items-center text-sm text-blue-900">
                   Searching Telegram Username...
                   <LoaderSpinner class="scale-[0.3]" />
                 </div>
-                <div v-if="telegramDetails.username != ''" class="mt-3 text-sm text-green-900">
-                  [USERNAME: {{ telegramDetails.username }}] [GLOBAL NAME: {{ telegramDetails.publicName }}]</div>
+                <div v-if="formFieldProps.telegramUsername.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.telegramUsername.details.username }}] [GLOBAL NAME: {{
+                    formFieldProps.telegramUsername.details.publicName }}]</div>
               </div>
             </div>
             <div class="pb-4 text-[23px] font-light">
@@ -105,85 +110,85 @@
   </div>
 
   <!-- MOBILE VIEW -->
-  <div id="section-mobile-whitelist"
-    class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden">
-    <!-- Decorations -->
-    <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
-    </div>
-    <div class="absolute left-[50px] top-[800px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
-    </div>
-    <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black">
-    </div>
-
-    <!-- TOP  SECTION -->
-    <div class="flex">
-      <div class="relative flex h-full w-full items-center justify-center">
-        <div class="border border-black bg-white p-2">
-          <img src="/bear.png" class="mx-auto w-[100px]" />
-          <div><i>./bear.gif</i></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BOTTOM SECTION -->
-    <div class="relative mt-5">
-      <!-- FORM -->
-      <div class="relative z-10">
-        <Form @submit="onSubmit">
-          <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium">
-            <div class="pb-2">Whitelist Application</div>
-            <div class="pb-4 text-[15px] font-light">
-              <div class="pb-2">
-                What is your Twitter/X username?
-              </div>
-              <div>
-                <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your Twitter/X username" />
-                <ErrorMessage name="xusername" class="text-sm text-red-500" />
-              </div>
-            </div>
-            <div class="pb-4 text-[15px] font-light">
-              <div class="pb-2">
-                What is your Discord ID?
-              </div>
-              <div>
-                <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your Discord username" />
-                <ErrorMessage name="discordusername" class="text-sm text-red-500" />
-                <div v-if="discordDetails.username != ''" class="text-sm text-green-900">
-                  Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div>
-              </div>
-            </div>
-            <div class="pb-4 text-[15px] font-light">
-              <div class="pb-2">
-                What is your Telegram @?
-              </div>
-              <div>
-                <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your Telegram @" />
-                <ErrorMessage name="telegramusername" class="text-sm text-red-500" />
-              </div>
-            </div>
-            <div class="pb-4 text-[15px] font-light">
-              <div class="pb-2">
-                What is your BeraChain address?
-              </div>
-              <div>
-                <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
-                  placeholder="Enter your BeraChain address" />
-                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 flex flex-row-reverse">
-            <button
-              class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button>
-          </div>
-        </Form>
-      </div>
-    </div>
-
-  </div>
+  <!-- <div id="section-mobile-whitelist" -->
+  <!--   class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden"> -->
+  <!--   <!-- Decorations --> -->
+  <!--   <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> -->
+  <!--   </div> -->
+  <!--   <div class="absolute left-[50px] top-[800px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> -->
+  <!--   </div> -->
+  <!--   <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black"> -->
+  <!--   </div> -->
+  <!---->
+  <!--   <!-- TOP  SECTION --> -->
+  <!--   <div class="flex"> -->
+  <!--     <div class="relative flex h-full w-full items-center justify-center"> -->
+  <!--       <div class="border border-black bg-white p-2"> -->
+  <!--         <img src="/bear.png" class="mx-auto w-[100px]" /> -->
+  <!--         <div><i>./bear.gif</i></div> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!---->
+  <!--   <!-- BOTTOM SECTION --> -->
+  <!--   <div class="relative mt-5"> -->
+  <!--     <!-- FORM --> -->
+  <!--     <div class="relative z-10"> -->
+  <!--       <Form @submit="onSubmit"> -->
+  <!--         <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium"> -->
+  <!--           <div class="pb-2">Whitelist Application</div> -->
+  <!--           <div class="pb-4 text-[15px] font-light"> -->
+  <!--             <div class="pb-2"> -->
+  <!--               What is your Twitter/X username? -->
+  <!--             </div> -->
+  <!--             <div> -->
+  <!--               <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
+  <!--                 placeholder="Enter your Twitter/X username" /> -->
+  <!--               <ErrorMessage name="xusername" class="text-sm text-red-500" /> -->
+  <!--             </div> -->
+  <!--           </div> -->
+  <!--           <div class="pb-4 text-[15px] font-light"> -->
+  <!--             <div class="pb-2"> -->
+  <!--               What is your Discord ID? -->
+  <!--             </div> -->
+  <!--             <div> -->
+  <!--               <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
+  <!--                 placeholder="Enter your Discord username" /> -->
+  <!--               <ErrorMessage name="discordusername" class="text-sm text-red-500" /> -->
+  <!--               <div v-if="discordDetails.username != ''" class="text-sm text-green-900"> -->
+  <!--                 Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div> -->
+  <!--             </div> -->
+  <!--           </div> -->
+  <!--           <div class="pb-4 text-[15px] font-light"> -->
+  <!--             <div class="pb-2"> -->
+  <!--               What is your Telegram @? -->
+  <!--             </div> -->
+  <!--             <div> -->
+  <!--               <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
+  <!--                 placeholder="Enter your Telegram @" /> -->
+  <!--               <ErrorMessage name="telegramusername" class="text-sm text-red-500" /> -->
+  <!--             </div> -->
+  <!--           </div> -->
+  <!--           <div class="pb-4 text-[15px] font-light"> -->
+  <!--             <div class="pb-2"> -->
+  <!--               What is your BeraChain address? -->
+  <!--             </div> -->
+  <!--             <div> -->
+  <!--               <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
+  <!--                 placeholder="Enter your BeraChain address" /> -->
+  <!--               <ErrorMessage name="berachainaddress" class="text-sm text-red-500" /> -->
+  <!--             </div> -->
+  <!--           </div> -->
+  <!--         </div> -->
+  <!--         <div class="mt-4 flex flex-row-reverse"> -->
+  <!--           <button -->
+  <!--             class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button> -->
+  <!--         </div> -->
+  <!--       </Form> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!---->
+  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -194,31 +199,48 @@ import * as yup from 'yup';
 
 const { errors, handleSubmit, defineField, setErrors } = useForm({
   validationSchema: toTypedSchema(yup.object({
-    xUsername: yup.string().required('Twitter/X Username is required').test('check-x-username', 'Username does not exist!', async (value) => {
-      try {
-        await validateXUsername(value);
-        return true;
-      } catch (error) {
-        return false;
-      }
-    }),
-    discordId: yup.string().required("Discord ID is required").test('check-discord-id', 'Discord ID does not exist!', async (value) => {
-      try {
-        await validateDiscordId(value);
-        return true;
-      } catch (error) {
-        return false;
-      }
-    }),
-    telegramUsername: yup.string().required("Telegram Username is required").test('check-telegram-username', 'Telegram Username does not exist!', async (value) => {
-      try {
-        await validateTelegramUsername(value);
-        return true;
-      } catch (error) {
-        return false;
-      }
-    }),
-    berachainAdd: yup.string().required()
+    xUsername: yup
+      .string()
+      .required('Twitter/X Username is required')
+      .test('check-x-username', 'Twitter/X username does not exist!', async (value) => {
+        try {
+          formFieldProps.value.xUsername.fieldValue = value
+          const result = await validationFunction(formFieldProps.value.xUsername, useSearchTwitterUsername);
+          if (!result) throw new Error()
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }),
+    discordId: yup
+      .string()
+      .required("Discord ID is required")
+      .test('check-discord-id', 'Discord ID does not exist!', async (value) => {
+        try {
+          formFieldProps.value.discordId.fieldValue = value
+          const result = await validationFunction(formFieldProps.value.discordId, useSearchDiscordId);
+          if (!result) throw new Error()
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }),
+    telegramUsername: yup
+      .string()
+      .required("Telegram Username is required")
+      .test('check-telegram-username', 'Telegram username does not exist!', async (value) => {
+        try {
+          formFieldProps.value.telegramUsername.fieldValue = value
+          const result = await validationFunction(formFieldProps.value.telegramUsername, useSearchTelegramUsername);
+          if (!result) throw new Error()
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }),
+    berachainAdd: yup
+      .string()
+      .required()
   }))
 });
 
@@ -228,102 +250,122 @@ const [telegramUsername, telegramUsernameAttrs] = defineField('telegramUsername'
 const [berachainAdd, berachainAddAttrs] = defineField('berachainAdd', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 
 const onSubmit = handleSubmit(values => {
-  console.log("This just fucking works lol")
   return;
 })
 
-let currentAbortControllerX: null | AbortController = null
-let currentAbortControllerDiscord: null | AbortController = null
-let currentAbortControllerTelegram: null | AbortController = null
-
-// TWITTER/X
-const xDetails = ref<{ username: string, publicName: string }>({
-  username: "",
-  publicName: ""
-})
-const isSearchingXUsername = ref<Boolean>(false);
-let prevXUsername = ""
-const validateXUsername = async (username: string) => {
-  if (prevXUsername == username && (errors.value.xUsername == "" || errors.value.xUsername == undefined)) return
-  else prevXUsername = username
-  setErrors({ xUsername: "" })
-
-  if (currentAbortControllerX != null) {
-    currentAbortControllerX.abort()
+interface IformFieldProp {
+  fieldValue: string;
+  prevFieldValue: string;
+  details: {
+    username: string;
+    publicName: string;
   }
-  currentAbortControllerX = new AbortController()
-
-  if (username == "") throw new Error("Error")
-  xDetails.value = { username: "", publicName: "" }
-
-  isSearchingXUsername.value = true
-  const { data } = await useSearchTwitterUsername(username, currentAbortControllerX)
-  if (data.value != null) {
-    isSearchingXUsername.value = false
-  }
-
-  if ('error' in data.value) throw new Error("Error")
-  xDetails.value = { username: data.value.username, publicName: data.value.publicName }
-  setErrors({ xUsername: "" })
+  abortController: AbortController | null;
+  errorName: string;
+  isSearching: boolean;
+  searchErrorValue: string
 }
 
-
-// DISCORD
-const discordDetails = ref<{ username: string, globalName: string }>({
-  username: "",
-  globalName: ""
-});
-const isSearchingDiscordId = ref<Boolean>(false);
-let prevDiscordId = ""
-const validateDiscordId = async (id: string) => {
-  if (prevDiscordId == id && (errors.value.discordId == "" || errors.value.discordId == undefined)) return
-  else prevDiscordId = id
-  setErrors({ discordId: "" })
-
-  if (currentAbortControllerDiscord != null) {
-    currentAbortControllerDiscord.abort()
-  }
-  if (id == "") throw new Error("Error");
-  currentAbortControllerDiscord = new AbortController()
-  discordDetails.value = { username: "", globalName: "" }
-
-  isSearchingDiscordId.value = true
-  const { data } = await useSearchDiscordId(id, currentAbortControllerDiscord)
-  isSearchingDiscordId.value = false
-
-  if ('message' in data) setErrors({ discordId: "Discord ID does not exist!" });
-  discordDetails.value = { username: data.username, globalName: data.raw.global_name }
-  setErrors({ discordId: "" })
+interface IformFieldProps {
+  xUsername: IformFieldProp;
+  discordId: IformFieldProp;
+  telegramUsername: IformFieldProp;
 }
 
+const formFieldProps = ref<IformFieldProps>(
+  {
+    xUsername: {
+      fieldValue: "",
+      prevFieldValue: "",
+      details: {
+        username: "",
+        publicName: ""
+      },
+      abortController: null,
+      errorName: "xUsername",
+      isSearching: false,
+      searchErrorValue: "Twitter/X username does not exist!"
+    },
+    discordId: {
+      fieldValue: "",
+      prevFieldValue: "",
+      details: {
+        username: "",
+        publicName: ""
+      },
+      abortController: null,
+      errorName: "discordId",
+      isSearching: false,
+      searchErrorValue: "Discord ID does not exist!"
 
-// TELEGRAM
-const telegramDetails = ref<{ username: string, publicName: string }>({
-  username: "",
-  publicName: ""
-});
-const isSearchingTelegramUsername = ref<Boolean>(false);
-let prevTelegramUsername = ""
-const validateTelegramUsername = async (username: string) => {
-  if (prevTelegramUsername == username && (errors.value.telegramUsername == "" || errors.value.discordId == undefined)) return
-  else prevTelegramUsername = username
-  setErrors({ telegramUsername: "" })
-
-  if (currentAbortControllerTelegram != null) {
-    currentAbortControllerTelegram.abort()
+    },
+    telegramUsername: {
+      fieldValue: "",
+      prevFieldValue: "",
+      details: {
+        username: "",
+        publicName: ""
+      },
+      abortController: null,
+      errorName: "telegramUsername",
+      isSearching: false,
+      searchErrorValue: "Telegram username does not exist!"
+    }
   }
-  if (username == "") return
-  currentAbortControllerTelegram = new AbortController()
-  telegramDetails.value = { username: "", publicName: "" }
+)
 
-  isSearchingTelegramUsername.value = true
-  const { data, error } = await useSearchTelegramUsername(username, currentAbortControllerTelegram)
-  if (data.value != null) {
-    isSearchingTelegramUsername.value = false
+
+const validationFunction = async (props: IformFieldProp, apiFunction: (value: string, abortController: AbortController) => Promise<any>): Promise<boolean | null> => {
+  // PREFETCH 
+  // OUT OF BLUR WITH NO CHANGE IN THE FIELD INPUT
+  const didFieldChange = !(props.prevFieldValue == props.fieldValue)
+  const hasError = !(errors.value[props.errorName as keyof typeof errors.value] == "" || errors.value[props.errorName as keyof typeof errors.value] == undefined)
+  if (!didFieldChange) {
+    if (hasError) {
+      return false
+    } else {
+      return true
+    }
+  }             // If it did not change then do nothing
+
+  // OUT OF BLUR WITH CHANGE IN THE FIELD INPUT
+  else props.prevFieldValue = props.fieldValue    // Otherwise store remember the new username
+  setErrors({ [props.errorName]: "" })     // And clear errors
+  if (props.abortController != null) props.abortController.abort() // Cancel previous fetch requests
+  if (props.fieldValue == "") {
+    props.details = { username: "", publicName: "" }// Clear the values of the details
+    props.isSearching = false             // Then signal that the fetch is done
+    return true                           // If the input field is empty then do nothing
   }
 
-  if ('error' in data.value) throw new Error("Error");
-  telegramDetails.value = { username: data.value.username, publicName: data.value.publicName }
-  setErrors({ telegramUsername: "" })
+  // PREPARE FOR FETCH REQUEST
+  props.abortController = new AbortController()  // Create Abort Controller for the new fetch request
+  props.details = { username: "", publicName: "" }// Clear the values of the details
+  // PREFETCH END
+
+  // FETCH
+  // PERFORM FETCH REQUEST
+  props.isSearching = true                // Signal that the fetch is ongoing
+  const { data } = await apiFunction(props.fieldValue, props.abortController)
+  if (data != null) {                               // If the fetch wasn't aborted (Which means that there wasn't another fetch request)
+    props.isSearching = false             // Then signal that the fetch is done
+  }
+  // FETCH END
+
+  // POST FETCH
+  const containsError = 'error' in data || data.publicName == undefined
+  if (containsError) {
+    setErrors({ [props.errorName]: props.searchErrorValue }) // Apply errors immediately without waiting for other async validators
+    return false
+  } // If there was an error field, then the user doesn't exist
+  props.details = {                               // If the fetch was successful and the user exists, then record it
+    username: data.username,
+    publicName: data.publicName
+  }
+
+  // CLEAN UP
+  setErrors({ [props.errorName]: "" })                     // Clear error fields immediately without waiting for other async validators
+  return true
+  // POST FETCH END
 }
 </script>

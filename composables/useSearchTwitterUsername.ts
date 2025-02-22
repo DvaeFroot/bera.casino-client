@@ -3,15 +3,14 @@ type TwitterUserData = {
   publicName: string;
 }
 
-export const useSearchTwitterUsername = async (username: string, abortController: AbortController): Promise<TwitterUserData | null | any> => {
+export const useSearchTwitterUsername = async (username: string, abortController: AbortController) => {
   const url = `/api/twitter?username=${username}`
   try {
     const { data } = await useFetch<TwitterUserData>(url, {
       signal: abortController.signal
     })
-    return { data }
+    return { data: data.value }
   } catch (error) {
-    console.log(error)
     return error
   }
 }
