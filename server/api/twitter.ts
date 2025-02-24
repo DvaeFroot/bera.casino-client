@@ -1,5 +1,3 @@
-import puppeteer from 'puppeteer';
-import { timeout } from 'puppeteer/src/puppeteer.js';
 import { closeAllPages, getPuppeteerBrowser } from '../puppeteer';
 
 export default defineEventHandler(async (event) => {
