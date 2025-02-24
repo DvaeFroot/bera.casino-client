@@ -5,12 +5,7 @@ type TelegramUserData = {
 
 export const useSearchTelegramUsername = async (username: string, abortController: AbortController): Promise<TelegramUserData | null | any> => {
   const url = `/api/telegram?username=${username}`
-  try {
-    const { data } = await useFetch<TelegramUserData>(url, {
-      signal: abortController.signal
-    })
-    return { data: data.value }
-  } catch (error) {
-    return error
-  }
+  const { data } = await useAsyncData<TelegramUserData>("telegramUserData", (): Promise<TelegramUserData> => $fetch(url, { signal: abortController.signal })
+  )
+  return { data: data.value }
 }

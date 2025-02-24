@@ -9,7 +9,6 @@ export default defineEventHandler(async (event) => {
   try {
     // Launch a headless browser using Puppeteer
     const browser = await getPuppeteerBrowser("twitter");
-    await closeAllPages(browser)
     const page = await browser.newPage();
 
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -20,11 +19,10 @@ export default defineEventHandler(async (event) => {
     })
 
     const publicName = spanTexts[0];
-    await closeAllPages(browser)
+    await page.close();
 
     return { publicName, username: `@${username}` }
   } catch (error) {
     return { error: 'An error occurred' };
   }
-
 });

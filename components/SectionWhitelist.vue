@@ -56,7 +56,7 @@
                 What is your Discord ID?
               </div>
               <div>
-                <input v-model="discordId" v-bind="discordidAttrs" type="text"
+                <input v-model="discordId" v-bind="discordIdAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
                 <div class="mt-3 text-sm text-red-500">{{ errors.discordId }}
                 </div>
@@ -110,85 +110,108 @@
   </div>
 
   <!-- MOBILE VIEW -->
-  <!-- <div id="section-mobile-whitelist" -->
-  <!--   class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden"> -->
-  <!--   <!-- Decorations --> -->
-  <!--   <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> -->
-  <!--   </div> -->
-  <!--   <div class="absolute left-[50px] top-[800px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black"> -->
-  <!--   </div> -->
-  <!--   <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black"> -->
-  <!--   </div> -->
-  <!---->
-  <!--   <!-- TOP  SECTION --> -->
-  <!--   <div class="flex"> -->
-  <!--     <div class="relative flex h-full w-full items-center justify-center"> -->
-  <!--       <div class="border border-black bg-white p-2"> -->
-  <!--         <img src="/bear.png" class="mx-auto w-[100px]" /> -->
-  <!--         <div><i>./bear.gif</i></div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!---->
-  <!--   <!-- BOTTOM SECTION --> -->
-  <!--   <div class="relative mt-5"> -->
-  <!--     <!-- FORM --> -->
-  <!--     <div class="relative z-10"> -->
-  <!--       <Form @submit="onSubmit"> -->
-  <!--         <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium"> -->
-  <!--           <div class="pb-2">Whitelist Application</div> -->
-  <!--           <div class="pb-4 text-[15px] font-light"> -->
-  <!--             <div class="pb-2"> -->
-  <!--               What is your Twitter/X username? -->
-  <!--             </div> -->
-  <!--             <div> -->
-  <!--               <Field name="xusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
-  <!--                 placeholder="Enter your Twitter/X username" /> -->
-  <!--               <ErrorMessage name="xusername" class="text-sm text-red-500" /> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--           <div class="pb-4 text-[15px] font-light"> -->
-  <!--             <div class="pb-2"> -->
-  <!--               What is your Discord ID? -->
-  <!--             </div> -->
-  <!--             <div> -->
-  <!--               <Field name="discordusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
-  <!--                 placeholder="Enter your Discord username" /> -->
-  <!--               <ErrorMessage name="discordusername" class="text-sm text-red-500" /> -->
-  <!--               <div v-if="discordDetails.username != ''" class="text-sm text-green-900"> -->
-  <!--                 Username: {{ discordDetails.username }} Global Name: {{ discordDetails.globalName }}</div> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--           <div class="pb-4 text-[15px] font-light"> -->
-  <!--             <div class="pb-2"> -->
-  <!--               What is your Telegram @? -->
-  <!--             </div> -->
-  <!--             <div> -->
-  <!--               <Field name="telegramusername" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
-  <!--                 placeholder="Enter your Telegram @" /> -->
-  <!--               <ErrorMessage name="telegramusername" class="text-sm text-red-500" /> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--           <div class="pb-4 text-[15px] font-light"> -->
-  <!--             <div class="pb-2"> -->
-  <!--               What is your BeraChain address? -->
-  <!--             </div> -->
-  <!--             <div> -->
-  <!--               <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none" -->
-  <!--                 placeholder="Enter your BeraChain address" /> -->
-  <!--               <ErrorMessage name="berachainaddress" class="text-sm text-red-500" /> -->
-  <!--             </div> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--         <div class="mt-4 flex flex-row-reverse"> -->
-  <!--           <button -->
-  <!--             class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button> -->
-  <!--         </div> -->
-  <!--       </Form> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!---->
-  <!-- </div> -->
+  <div id="section-mobile-whitelist"
+    class="relative flex flex-col justify-between overflow-hidden bg-light-peach px-4 pb-12 pt-[25px] sm:hidden">
+    <!-- Decorations -->
+    <div class="absolute left-[100px] top-[400px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
+    </div>
+    <div class="absolute left-[50px] top-[800px] -z-0 h-[300px]  w-[1200px] max-w-full border border-black">
+    </div>
+    <div class="absolute  bottom-[-100px] right-[-100px] -z-0 h-[300px]  w-[1200px] border border-black">
+    </div>
+
+    <!-- TOP  SECTION -->
+    <div class="flex">
+      <div class="relative flex h-full w-full items-center justify-center">
+        <div class="border border-black bg-white p-2">
+          <img src="/bear.png" class="mx-auto w-[100px]" />
+          <div><i>./bear.gif</i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="relative mt-5">
+      <!-- FORM -->
+      <div class="relative z-10">
+        <form @submit="onSubmit">
+          <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium">
+            <div class="pb-2">Whitelist Application</div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Twitter/X username?
+              </div>
+              <div>
+                <input v-model="xUsername" v-bind="xUsernameAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your Twitter/X username" />
+                <div v-if="formFieldProps.xUsername.isSearching"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Twitter/X Username...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div class="mt-3 text-sm text-red-500">{{ errors.xUsername }}</div>
+                <div v-if="formFieldProps.xUsername.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.xUsername.details.username }}]<br>[PUBLIC NAME: {{
+                    formFieldProps.xUsername.details.publicName }}]</div>
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Discord ID?
+              </div>
+              <div>
+                <input v-model="discordId" v-bind="discordIdAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
+                <div v-if="formFieldProps.discordId.isSearching"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Discord ID...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div class="mt-3 text-sm text-red-500">{{ errors.discordId }}</div>
+                <div v-if="formFieldProps.discordId.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.discordId.details.username }}]<br>[GLOBAL NAME: {{
+                    formFieldProps.discordId.details.publicName }}]</div>
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your Telegram @?
+              </div>
+              <div>
+                <input v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Telegram @" />
+                <div v-if="formFieldProps.telegramUsername.isSearching"
+                  class="align-center flex flex-row items-center text-sm text-blue-900">
+                  Searching Telegram Username...
+                  <LoaderSpinner class="scale-[0.3]" />
+                </div>
+                <div class="mt-3 text-sm text-red-500">{{ errors.telegramUsername }}</div>
+                <div v-if="formFieldProps.telegramUsername.details.username != ''" class="mt-3 text-sm text-green-900">
+                  [USERNAME: {{ formFieldProps.telegramUsername.details.username }}]<br>[PUBLIC NAME: {{
+                    formFieldProps.telegramUsername.details.publicName }}]</div>
+              </div>
+            </div>
+            <div class="pb-4 text-[15px] font-light">
+              <div class="pb-2">
+                What is your BeraChain address?
+              </div>
+              <div>
+                <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                  placeholder="Enter your BeraChain address" />
+                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-row-reverse">
+            <button
+              class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -245,7 +268,7 @@ const { errors, handleSubmit, defineField, setErrors } = useForm({
 });
 
 const [xUsername, xUsernameAttrs] = defineField('xUsername', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
-const [discordId, discordidAttrs] = defineField('discordId', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
+const [discordId, discordIdAttrs] = defineField('discordId', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 const [telegramUsername, telegramUsernameAttrs] = defineField('telegramUsername', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 const [berachainAdd, berachainAddAttrs] = defineField('berachainAdd', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 
@@ -341,16 +364,13 @@ const validationFunction = async (props: IformFieldProp, apiFunction: (value: st
   // PREPARE FOR FETCH REQUEST
   props.abortController = new AbortController()  // Create Abort Controller for the new fetch request
   props.details = { username: "", publicName: "" }// Clear the values of the details
-  // PREFETCH END
 
-  // FETCH
   // PERFORM FETCH REQUEST
   props.isSearching = true                // Signal that the fetch is ongoing
   const { data } = await apiFunction(props.fieldValue, props.abortController)
   if (data != null) {                               // If the fetch wasn't aborted (Which means that there wasn't another fetch request)
     props.isSearching = false             // Then signal that the fetch is done
   }
-  // FETCH END
 
   // POST FETCH
   const containsError = 'error' in data || data.publicName == undefined
@@ -366,6 +386,5 @@ const validationFunction = async (props: IformFieldProp, apiFunction: (value: st
   // CLEAN UP
   setErrors({ [props.errorName]: "" })                     // Clear error fields immediately without waiting for other async validators
   return true
-  // POST FETCH END
 }
 </script>

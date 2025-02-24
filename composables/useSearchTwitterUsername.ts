@@ -5,12 +5,6 @@ type TwitterUserData = {
 
 export const useSearchTwitterUsername = async (username: string, abortController: AbortController) => {
   const url = `/api/twitter?username=${username}`
-  try {
-    const { data } = await useFetch<TwitterUserData>(url, {
-      signal: abortController.signal
-    })
-    return { data: data.value }
-  } catch (error) {
-    return error
-  }
+  const { data } = await useAsyncData<TwitterUserData>("twitterUserData", (): Promise<TwitterUserData> => $fetch(url, { signal: abortController.signal }))
+  return { data: data.value }
 }

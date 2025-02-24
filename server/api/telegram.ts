@@ -9,7 +9,6 @@ export default defineEventHandler(async (event) => {
   try {
     // Launch a headless browser using Puppeteer
     const browser = await getPuppeteerBrowser("telegram");
-    await closeAllPages(browser)
     const page = await browser.newPage();
 
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -17,10 +16,9 @@ export default defineEventHandler(async (event) => {
 
     const publicName = await page.$eval('.tgme_page_title span', span => span.innerText)
     const username = await page.$eval('.tgme_page_extra', span => span.innerText)
+    await page.close()
 
-    await closeAllPages(browser)
-
-    return { publicName, username: `@${username}` }
+    return { publicName, username: `${username}` }
   } catch (error) {
     return { error: 'An error occurred' };
   }
