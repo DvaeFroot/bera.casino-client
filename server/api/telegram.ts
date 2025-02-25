@@ -1,4 +1,5 @@
-import { closeAllPages, getPuppeteerBrowser } from '../puppeteer';
+import { getPuppeteerBrowser } from '../puppeteer';
+import { withTimeout } from '../utils'
 
 export default defineEventHandler(async (event) => {
   // Retrieve the username from the query params
@@ -11,12 +12,23 @@ export default defineEventHandler(async (event) => {
     const browser = await getPuppeteerBrowser("telegram");
     const page = await browser.newPage();
 
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('.tgme_page_action')
+    let publicName;
+    let username;
+    const timeout = 5000;
 
-    const publicName = await page.$eval('.tgme_page_title span', span => span.innerText)
-    const username = await page.$eval('.tgme_page_extra', span => span.innerText)
+    try {
+      await withTimeout<{ publicName: any, username: any }>((async (): Promise<{ publicName: any, username: any }> => {
+        await page.goto(url, { waitUntil: 'domcontentloaded' });
+        await page.waitForSelector('.tgme_page_action')
+
+        publicName = await page.$eval('.tgme_page_title span', span => span.innerText)
+        username = await page.$eval('.tgme_page_extra', span => span.innerText)
+        return { publicName, username }
+      })(), timeout)
+    } catch (error) { }
+
     await page.close()
+    console.log("Quitting telegram page")
 
     return { publicName, username: `${username}` }
   } catch (error) {
