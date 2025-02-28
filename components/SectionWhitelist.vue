@@ -37,7 +37,7 @@
                 What is your Twitter/X username?
               </div>
               <div>
-                <input v-model="xUsername" v-bind="xUsernameAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="xUsername" v-bind="xUsernameAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Twitter/X username" />
                 <div name="xusername" class="mt-3 text-sm text-red-500"> {{ errors.xUsername }}</div>
@@ -56,7 +56,7 @@
                 What is your Discord ID?
               </div>
               <div>
-                <input v-model="discordId" v-bind="discordIdAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="discordId" v-bind="discordIdAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
                 <div class="mt-3 text-sm text-red-500">{{ errors.discordId }}
                 </div>
@@ -75,7 +75,7 @@
                 What is your Telegram @?
               </div>
               <div>
-                <input v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Telegram @" />
                 <div class="mt-3 text-sm text-red-500">{{ errors.telegramUsername }} </div>
                 <div v-if="formFieldProps.telegramUsername.isSearching"
@@ -93,7 +93,7 @@
                 What is your BeraChain address?
               </div>
               <div>
-                <input v-model="berachainAdd" v-bind="berachainAddAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="berachainAdd" v-bind="berachainAddAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your BeraChain address" />
                 <div class="text-sm text-red-500"> {{ errors.berachainAdd }}</div>
@@ -101,8 +101,17 @@
             </div>
           </div>
           <div class="mt-8 flex flex-row-reverse">
-            <button
-              class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[24px] font-normal hover:bg-light-brown">Submit</button>
+            <button :disabled="isSubmitting" :class="{
+              'border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[24px] font-normal hover:bg-light-brown': !isSubmitting,
+              'border border-black bg-light-brown px-8 py-2 font-[Lexend] text-[24px] font-normal:': isSubmitting,
+            }">
+              <template v-if="isSubmitting">
+                <LoaderSpinner />
+              </template>
+              <template v-else>
+                Submit
+              </template>
+            </button>
           </div>
         </form>
       </div>
@@ -134,7 +143,7 @@
     <div class="relative mt-5">
       <!-- FORM -->
       <div class="relative z-10">
-        <form @submit="onSubmit">
+        <form @submit.prevent="onSubmit">
           <div class="border border-black bg-light-peach-100 p-8 font-[Lexend] text-[25px] font-medium">
             <div class="pb-2">Whitelist Application</div>
             <div class="pb-4 text-[15px] font-light">
@@ -142,7 +151,7 @@
                 What is your Twitter/X username?
               </div>
               <div>
-                <input v-model="xUsername" v-bind="xUsernameAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="xUsername" v-bind="xUsernameAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your Twitter/X username" />
                 <div v-if="formFieldProps.xUsername.isSearching"
@@ -161,7 +170,7 @@
                 What is your Discord ID?
               </div>
               <div>
-                <input v-model="discordId" v-bind="discordIdAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="discordId" v-bind="discordIdAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Discord username" />
                 <div v-if="formFieldProps.discordId.isSearching"
                   class="align-center flex flex-row items-center text-sm text-blue-900">
@@ -179,7 +188,7 @@
                 What is your Telegram @?
               </div>
               <div>
-                <input v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
+                <input :disabled="isSubmitting" v-model="telegramUsername" v-bind="telegramUsernameAttrs" type="text"
                   class="w-full border border-black px-6 py-2 outline-none" placeholder="Enter your Telegram @" />
                 <div v-if="formFieldProps.telegramUsername.isSearching"
                   class="align-center flex flex-row items-center text-sm text-blue-900">
@@ -197,30 +206,63 @@
                 What is your BeraChain address?
               </div>
               <div>
-                <Field name="berachainaddress" type="text" class="w-full border border-black px-6 py-2 outline-none"
+                <input :disabled="isSubmitting" v-model="berachainAdd" v-bind="berachainAddAttrs" type="text"
+                  class="w-full border border-black px-6 py-2 outline-none"
                   placeholder="Enter your BeraChain address" />
-                <ErrorMessage name="berachainaddress" class="text-sm text-red-500" />
+                <div class="text-sm text-red-500"> {{ errors.berachainAdd }}</div>
               </div>
             </div>
           </div>
           <div class="mt-4 flex flex-row-reverse">
-            <button
-              class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">Submit</button>
+            <button :disabled="isSubmitting" :class="{
+              'border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[24px] font-normal hover:bg-light-brown': !isSubmitting,
+              'border border-black bg-light-brown px-8 py-2 font-[Lexend] text-[24px] font-normal:': isSubmitting,
+            }">
+              <template v-if="isSubmitting">
+                <LoaderSpinner />
+              </template>
+              <template v-else>
+                Submit
+              </template>
+            </button>
           </div>
         </form>
       </div>
     </div>
 
   </div>
+  <HeadlessDialog :open="isOpen" @close="setIsOpen" class="relative z-50">
+    <div class="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+    <div class="fixed inset-0 flex w-screen items-center justify-center p-4">
+      <HeadlessDialogPanel class="bg-egg-white p-5 border border-black">
+        <HeadlessDialogDescription>
+          {{ hasSubmitFormError ? "Something went wrong submitting your information! Please try again." :
+            "Your information was submitted successfully!" }}
+        </HeadlessDialogDescription>
+        <div class="flex flex-row-reverse mt-2">
+          <button @click="setIsOpen(false)"
+            class="border border-black bg-light-yellow px-8 py-2 font-[Lexend] text-[18px] font-normal hover:bg-light-brown">OK</button>
+        </div>
+      </HeadlessDialogPanel>
+    </div>
+  </HeadlessDialog>
 </template>
 
 <script lang="ts" setup>
-import { useForm, Form, Field, ErrorMessage } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/yup'
 import * as yup from 'yup';
+import type LoaderSpinner from './LoaderSpinner.vue';
 
+const isOpen = ref(false)
+function setIsOpen(value: any) {
+  isOpen.value = value
+}
 
-const { errors, handleSubmit, defineField, setErrors } = useForm({
+const hasSubmitFormError = ref(false)
+
+const { resetForm, errors, handleSubmit, defineField, setErrors, isSubmitting } = useForm({
   validationSchema: toTypedSchema(yup.object({
     xUsername: yup
       .string()
@@ -263,7 +305,7 @@ const { errors, handleSubmit, defineField, setErrors } = useForm({
       }),
     berachainAdd: yup
       .string()
-      .required()
+      .required("Berachain Address is required")
   }))
 });
 
@@ -272,11 +314,7 @@ const [discordId, discordIdAttrs] = defineField('discordId', { validateOnBlur: t
 const [telegramUsername, telegramUsernameAttrs] = defineField('telegramUsername', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 const [berachainAdd, berachainAddAttrs] = defineField('berachainAdd', { validateOnBlur: true, validateOnChange: false, validateOnInput: false, validateOnModelUpdate: false })
 
-const onSubmit = handleSubmit(values => {
-  return;
-})
-
-interface IformFieldProp {
+interface IFormFieldProp {
   fieldValue: string;
   prevFieldValue: string;
   details: {
@@ -289,13 +327,13 @@ interface IformFieldProp {
   searchErrorValue: string
 }
 
-interface IformFieldProps {
-  xUsername: IformFieldProp;
-  discordId: IformFieldProp;
-  telegramUsername: IformFieldProp;
+interface IFormFieldProps {
+  xUsername: IFormFieldProp;
+  discordId: IFormFieldProp;
+  telegramUsername: IFormFieldProp;
 }
 
-const formFieldProps = ref<IformFieldProps>(
+const formFieldProps = ref<IFormFieldProps>(
   {
     xUsername: {
       fieldValue: "",
@@ -338,7 +376,39 @@ const formFieldProps = ref<IformFieldProps>(
 )
 
 
-const validationFunction = async (props: IformFieldProp, apiFunction: (value: string, abortController: AbortController) => Promise<any>): Promise<boolean | null> => {
+const onSubmit = handleSubmit(async (values) => {
+  console.log(isSubmitting.value)
+  const formData = {
+    berachainAdd: berachainAdd.value,
+    twitterAcc: {
+      username: formFieldProps.value.xUsername.details.username,
+      publicName: formFieldProps.value.xUsername.details.publicName,
+    },
+    discordAcc: {
+      discordId: discordId.value,
+      username: formFieldProps.value.discordId.details.username,
+      publicName: formFieldProps.value.discordId.details.publicName,
+    },
+    telegramAcc: {
+      username: telegramUsername.value,
+      publicName: formFieldProps.value.telegramUsername.details.publicName,
+    },
+  }
+  const result = await useSubmitWhitelistForm(formData)
+  const containsError = "error" in result.response.data
+  hasSubmitFormError.value = containsError
+
+  setIsOpen(true)
+  resetForm()
+  formFieldProps.value.xUsername.details.username = ""
+  formFieldProps.value.discordId.details.username = ""
+  formFieldProps.value.telegramUsername.details.username = ""
+  formFieldProps.value.xUsername.details.publicName = ""
+  formFieldProps.value.discordId.details.publicName = ""
+  formFieldProps.value.telegramUsername.details.publicName = ""
+})
+
+const validationFunction = async (props: IFormFieldProp, apiFunction: (value: string, abortController: AbortController) => Promise<any>): Promise<boolean | null> => {
   // PREFETCH 
   // OUT OF BLUR WITH NO CHANGE IN THE FIELD INPUT
   const didFieldChange = !(props.prevFieldValue == props.fieldValue)

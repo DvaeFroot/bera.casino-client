@@ -24,5 +24,8 @@
     "vue-loading-overlay": "^6.0.6",
     "vue-router": "latest",
     "vue-spinner": "^1.0.4"
+  },
+  "devDependencies": {
+    "nuxt-headlessui": "^1.2.0"
   }
 }

@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
     let publicName;
     let username;
-    const timeout = 5000;
+    const timeout = 30000;
 
     try {
       await withTimeout<{ publicName: any, username: any }>((async (): Promise<{ publicName: any, username: any }> => {

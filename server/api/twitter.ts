@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     const page = await browser.newPage();
 
     let publicName;
-    const timeout = 5000;
+    const timeout = 30000;
     try {
       await withTimeout((async () => {
         await page.goto(url, { waitUntil: 'domcontentloaded' });
