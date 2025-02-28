@@ -9,7 +9,7 @@ const puppeteerBrowser: { twitter: Browser | null, telegram: Browser | null } = 
 export async function getPuppeteerBrowser(type: 'twitter' | 'telegram'): Promise<Browser> {
   if (puppeteerBrowser[type] === null) {
     puppeteerBrowser[type] = await puppeteer.launch({
-      headless: true,
+      headless: true, args: ['--no-sandbox']
     })
   }
 
