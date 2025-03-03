@@ -21,8 +21,12 @@
       </div>
     </div>
     <div class="flex flex-row items-center">
-      <Icon name="prime:discord" class="mx h-10 w-10 cursor-pointer hover:border-b-4 hover:border-black" />
-      <Icon name="prime:twitter" class="mx h-6 w-6 cursor-pointer hover:border-b-4 hover:border-black" />
+      <a :href="DISCORD_LINK">
+        <Icon name="prime:discord" class="mx h-10 w-10 cursor-pointer hover:border-b-4 hover:border-black" />
+      </a>
+      <a :href="TWITTER_LINK">
+        <Icon name="prime:twitter" class="mx h-6 w-6 cursor-pointer hover:border-b-4 hover:border-black" />
+      </a>
     </div>
   </div>
 
@@ -67,10 +71,14 @@
                 </a>
 
                 <div class="mt-4 flex flex-row items-center px-4">
-                  <Icon @click="setIsOpen(false)" name="prime:discord"
-                    class="mx h-10 w-10 cursor-pointer hover:border-b-4 hover:border-black" />
-                  <Icon @click="setIsOpen(false)" name="prime:twitter"
-                    class="mx ml-2 h-6 w-6 cursor-pointer hover:border-b-4 hover:border-black" />
+                  <a :href="DISCORD_LINK">
+                    <Icon @click="setIsOpen(false)" name="prime:discord"
+                      class="mx h-10 w-10 cursor-pointer hover:border-b-4 hover:border-black" />
+                  </a>
+                  <a :href="TWITTER_LINK">
+                    <Icon @click="setIsOpen(false)" name="prime:twitter"
+                      class="mx ml-2 h-6 w-6 cursor-pointer hover:border-b-4 hover:border-black" />
+                  </a>
                 </div>
               </div>
             </DialogDescription>
@@ -84,6 +92,9 @@
 
 <script setup lang="ts">
 import { Dialog, DialogTitle, DialogDescription, DialogOverlay } from '@headlessui/vue'
+
+const DISCORD_LINK = "https://discord.gg/hcWgw7Q3"
+const TWITTER_LINK = "https://x.com/bera_casino"
 
 // DIALOG
 const isOpen = ref(false);
