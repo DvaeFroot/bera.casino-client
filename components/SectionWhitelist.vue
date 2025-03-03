@@ -268,14 +268,15 @@ const { resetForm, errors, handleSubmit, defineField, setErrors, isSubmitting } 
       .string()
       .required('Twitter/X Username is required')
       .test('check-x-username', 'Twitter/X username does not exist!', async (value) => {
-        try {
-          formFieldProps.value.xUsername.fieldValue = value
-          const result = await validationFunction(formFieldProps.value.xUsername, useSearchTwitterUsername);
-          if (!result) throw new Error()
-          return true;
-        } catch (error) {
-          return false;
-        }
+        return true
+        // try {
+        //   formFieldProps.value.xUsername.fieldValue = value
+        //   const result = await validationFunction(formFieldProps.value.xUsername, useSearchTwitterUsername);
+        //   if (!result) throw new Error()
+        //   return true;
+        // } catch (error) {
+        //   return false;
+        // }
       }),
     discordId: yup
       .string()
@@ -294,14 +295,15 @@ const { resetForm, errors, handleSubmit, defineField, setErrors, isSubmitting } 
       .string()
       .required("Telegram Username is required")
       .test('check-telegram-username', 'Telegram username does not exist!', async (value) => {
-        try {
-          formFieldProps.value.telegramUsername.fieldValue = value
-          const result = await validationFunction(formFieldProps.value.telegramUsername, useSearchTelegramUsername);
-          if (!result) throw new Error()
-          return true;
-        } catch (error) {
-          return false;
-        }
+        return true
+        // try {
+        //   formFieldProps.value.telegramUsername.fieldValue = value
+        //   const result = await validationFunction(formFieldProps.value.telegramUsername, useSearchTelegramUsername);
+        //   if (!result) throw new Error()
+        //   return true;
+        // } catch (error) {
+        //   return false;
+        // }
       }),
     berachainAdd: yup
       .string()
@@ -381,8 +383,8 @@ const onSubmit = handleSubmit(async (values) => {
   const formData = {
     berachainAdd: berachainAdd.value,
     twitterAcc: {
-      username: formFieldProps.value.xUsername.details.username,
-      publicName: formFieldProps.value.xUsername.details.publicName,
+      username: xUsername.value,
+      publicName: 'Web scraping not yet implemented.',
     },
     discordAcc: {
       discordId: discordId.value,
@@ -391,11 +393,12 @@ const onSubmit = handleSubmit(async (values) => {
     },
     telegramAcc: {
       username: telegramUsername.value,
-      publicName: formFieldProps.value.telegramUsername.details.publicName,
+      publicName: 'Web scraping not yet implemented.',
     },
   }
   const result = await useSubmitWhitelistForm(formData)
-  const containsError = "error" in result.response.data
+  console.log(result.response.data.value)
+  const containsError = "error" in result.response.data || result.response.data.value == null
   hasSubmitFormError.value = containsError
 
   setIsOpen(true)
