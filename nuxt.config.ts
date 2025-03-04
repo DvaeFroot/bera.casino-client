@@ -29,7 +29,6 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Bera Casino',
       charset: 'utf-8',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

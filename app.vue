@@ -6,4 +6,8 @@
 
 <script setup lang="ts">
 provideHeadlessUseId(() => useId())
+
+useHead({
+  title: 'Bera Casino'
+})
 </script>
