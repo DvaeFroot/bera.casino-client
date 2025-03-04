@@ -9,9 +9,8 @@ provideHeadlessUseId(() => useId())
 
 useHead({
   title: 'Bera Casino',
-
   link: [
-    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    { rel: 'icon', type: 'image/x-icon', href: '/newfavicon.ico' }
   ]
 })
 </script>
